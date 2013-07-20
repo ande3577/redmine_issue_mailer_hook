@@ -1,0 +1,24 @@
+--- /home/redmine/git/tools/redmine/app/views/mailer/_issue.html.erb	2013-07-19 18:49:44.464624167 -0500
++++ _issue.html.erb	2013-07-20 16:40:03.230647894 -0500
+@@ -1,5 +1,7 @@
+ <h1><%= link_to(h("#{issue.tracker.name} ##{issue.id}: #{issue.subject}"), issue_url) %></h1>
+ 
++<%= call_hook(:view_issues_mailer_after_url, { :issue => issue }) %>
++
+ <ul>
+ <li><%=l(:field_author)%>: <%=h issue.author %></li>
+ <li><%=l(:field_status)%>: <%=h issue.status %></li>
+@@ -10,10 +12,13 @@
+ <% issue.visible_custom_field_values(users.first).each do |c| %>
+   <li><%=h c.custom_field.name %>: <%=h show_value(c) %></li>
+ <% end %>
++<%= call_hook(:view_issues_mailer_after_fields, { :issue => issue }) %>
+ </ul>
+ 
+ <%= textilizable(issue, :description, :only_path => false) %>
+ 
++<%= call_hook(:view_issues_mailer_after_description, { :issue => issue }) %>
++
+ <% if issue.attachments.any? %>
+   <fieldset class="attachments"><legend><%= l(:label_attachment_plural) %></legend>
+   <% issue.attachments.each do |attachment| %>
