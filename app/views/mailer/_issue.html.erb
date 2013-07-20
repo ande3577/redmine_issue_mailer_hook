@@ -10,11 +10,12 @@
 <% issue.visible_custom_field_values(users.first).each do |c| %>
   <li><%=h c.custom_field.name %>: <%=h show_value(c) %></li>
 <% end %>
+<%= call_hook(:view_issues_mailer_after_fields, { :issue => issue }) %>
 </ul>
 
 <%= textilizable(issue, :description, :only_path => false) %>
 
-<%= call_hook(:view_issues_mailer_html, { :issue => issue }) %>
+<%= call_hook(:view_issues_mailer_after_description, { :issue => issue }) %>
 
 <% if issue.attachments.any? %>
   <fieldset class="attachments"><legend><%= l(:label_attachment_plural) %></legend>
