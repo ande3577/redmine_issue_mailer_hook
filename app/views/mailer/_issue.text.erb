@@ -1,5 +1,6 @@
 <%= "#{issue.tracker.name} ##{issue.id}: #{issue.subject}" %>
 <%= issue_url %>
+<%= call_hook(:view_issues_mailer_after_url, { :issue => issue }) %>
 
 * <%=l(:field_author)%>: <%= issue.author %>
 * <%=l(:field_status)%>: <%= issue.status %>

@@ -1,5 +1,7 @@
 <h1><%= link_to(h("#{issue.tracker.name} ##{issue.id}: #{issue.subject}"), issue_url) %></h1>
 
+<%= call_hook(:view_issues_mailer_after_url, { :issue => issue }) %>
+
 <ul>
 <li><%=l(:field_author)%>: <%=h issue.author %></li>
 <li><%=l(:field_status)%>: <%=h issue.status %></li>
