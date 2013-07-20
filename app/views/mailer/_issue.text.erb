@@ -12,6 +12,8 @@
 ----------------------------------------
 <%= issue.description %>
 
+<%= call_hook(:view_issues_mailer_text, { :issue => issue }) %>
+
 <% if issue.attachments.any? -%>
 ---<%= l(:label_attachment_plural).ljust(37, '-') %>
 <% issue.attachments.each do |attachment| -%>

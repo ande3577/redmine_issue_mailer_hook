@@ -14,6 +14,8 @@
 
 <%= textilizable(issue, :description, :only_path => false) %>
 
+<%= call_hook(:view_issues_mailer_html, { :issue => issue }) %>
+
 <% if issue.attachments.any? %>
   <fieldset class="attachments"><legend><%= l(:label_attachment_plural) %></legend>
   <% issue.attachments.each do |attachment| %>
