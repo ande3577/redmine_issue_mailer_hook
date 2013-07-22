@@ -1,6 +1,6 @@
 # redmine_issue_mailer_hook
 
-Works on redmine 2.4.x (should work on 2.3.x as well)
+Master branch works on redmine 2.4.x ONLY. 2.3.x must use 2.3-branch.
 
 ## Overview
 
